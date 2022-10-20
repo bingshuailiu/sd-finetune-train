@@ -54,6 +54,13 @@ def get_parser(**parser_kwargs):
         help="path to checkpoint to load model state from"
     )
     parser.add_argument(
+        "--save_dir",
+        type=str,
+        nargs="?",
+        default="",
+        help="path of where to save the checkpoints"
+    )
+    parser.add_argument(
         "-n",
         "--name",
         type=str,
@@ -638,7 +645,7 @@ if __name__ == "__main__":
         else:
             name = ""
         nowname = now + name + opt.postfix
-        logdir = os.path.join(opt.logdir, nowname)
+        logdir = os.path.join(opt.save_dir, nowname)
 
     ckptdir = os.path.join(logdir, "checkpoints")
     cfgdir = os.path.join(logdir, "configs")
